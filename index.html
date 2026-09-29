@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NINETY+ — BOXY BLAUGRANA</title>
+<meta name="description" content="NINETY+ Boxy Blaugrana — launching Rp109.000.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#050505;--card:#0d0d10;--text:#f7f7f7;--muted:#9999a3;--line:#26262d;--violet:#8a1cff;--violet2:#bd5aff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+a{text-decoration:none;color:inherit}button{font:inherit}
+.nav{height:70px;position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(5,5,5,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{font-weight:900;font-size:23px;letter-spacing:-1.5px}.logo i{font-style:normal;color:var(--violet2)}
+.navlinks{display:flex;gap:36px;font-size:12px;font-weight:600;color:#c9c9cf}.navlinks a:hover{color:#fff}
+.navright{display:flex;gap:18px;font-size:17px;color:#ddd}.badge{position:relative}.badge:after{content:"";width:6px;height:6px;border-radius:50%;background:var(--violet2);position:absolute;right:-5px;top:-2px}
+.hero{min-height:100vh;padding-top:70px;position:relative;overflow:hidden;display:grid;grid-template-columns:45% 55%;background:radial-gradient(circle at 80% 40%,rgba(131,26,255,.28),transparent 32%),linear-gradient(115deg,#030303,#0c090f 70%,#17001e)}
+.hero-copy{z-index:3;align-self:center;padding:8vw 4vw 7vw 7vw}
+.eyebrow,.kicker{font-size:11px;letter-spacing:4px;font-weight:800;color:var(--violet2)}
+h1{font-size:clamp(62px,8vw,124px);line-height:.82;letter-spacing:-6px;margin:16px 0 26px;font-weight:900}
+h1 span{color:#8b1cff;text-shadow:0 0 40px rgba(139,28,255,.3)}
+.hero-copy p{color:#d1d1d6;line-height:1.65;max-width:460px;font-size:15px}
+.cta{display:inline-flex;margin-top:24px;padding:15px 23px;background:linear-gradient(90deg,#7211ff,#a735ff);font-size:12px;font-weight:900;letter-spacing:.8px;box-shadow:0 16px 40px rgba(116,17,255,.25);transition:.2s}
+.cta:hover{transform:translateY(-2px)}
+.hero-images{position:relative;min-height:calc(100vh - 70px);overflow:hidden}
+.hero-images:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#08070a 0%,transparent 28%,transparent 80%,rgba(5,5,5,.7)),linear-gradient(0deg,rgba(5,5,5,.5),transparent 45%);pointer-events:none}
+.hero-images .front{position:absolute;left:0;bottom:0;width:57%;height:92%;object-fit:cover;object-position:center top;filter:contrast(1.05)}
+.hero-images .back{position:absolute;right:0;top:7%;width:58%;height:78%;object-fit:cover;object-position:center top;filter:contrast(1.05);mix-blend-mode:screen;opacity:.9}
+.hero-side{position:absolute;right:4vw;top:50%;z-index:4;transform:rotate(90deg);transform-origin:right top;font-size:10px;letter-spacing:4px;color:#bdb5c5}
+.section{padding:100px 6vw;border-top:1px solid var(--line)}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:45px}.sectionhead h2{margin:7px 0 0;font-size:clamp(38px,5vw,65px);letter-spacing:-3px}.small{color:var(--muted);font-size:12px}
+.product{display:grid;grid-template-columns:1.2fr .8fr;gap:55px;align-items:start}
+.gallery{background:radial-gradient(circle at 50% 30%,rgba(124,21,255,.16),transparent 50%),#09090b;border:1px solid #25252b;overflow:hidden}
+.gallery-main{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:8px}.gallery-main img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:zoom-in;transition:transform .25s ease,filter .25s ease}.gallery-main img:hover{filter:brightness(1.08)}.gallery-main .gallery-wide{grid-column:1/-1;aspect-ratio:16/8}
+.gallery-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;border-top:1px solid #222}.gallery-thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid #333;cursor:zoom-in;transition:border-color .2s,transform .2s}.gallery-thumbs img:hover{border-color:#a43aff;transform:translateY(-2px)}
+.lightbox{position:fixed;inset:0;z-index:200;display:none;background:rgba(0,0,0,.94);align-items:center;justify-content:center;padding:28px}.lightbox.open{display:flex}
+.lightbox-stage{width:min(94vw,1200px);height:min(90vh,900px);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.lightbox-stage img{max-width:100%;max-height:100%;object-fit:contain;transform-origin:center;cursor:grab;user-select:none;-webkit-user-drag:none}.lightbox-stage img:active{cursor:grabbing}
+.lb-close,.lb-control{position:absolute;border:1px solid #3b3b43;background:rgba(10,10,12,.85);color:#fff;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;border-radius:50%;z-index:3}.lb-close{right:24px;top:20px;font-size:22px}.lb-controls{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;gap:8px;z-index:3}.lb-control{position:static;border-radius:8px;font-size:16px}.lb-caption{position:absolute;left:24px;bottom:26px;color:#bbb;font-size:10px;letter-spacing:1.5px;z-index:3}
+
+.gallery-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px;border-top:1px solid #222}.gallery-thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid #333}
+.info{padding-top:8px}.info h3{font-size:31px;margin:8px 0 4px}.launchlabel{display:inline-block;border:1px solid var(--violet);color:#c66aff;font-size:9px;font-weight:900;letter-spacing:2px;padding:6px 8px;margin:13px 0}
+.price{font-size:28px;font-weight:900;color:#a53aff;margin:4px 0 24px}.price del{font-size:14px;color:#777;margin-left:8px}
+.desc{color:#aaaab2;font-size:13px;line-height:1.8}.details{display:grid;gap:15px;margin:26px 0}.detail{display:flex;gap:12px}.ico{width:30px;height:30px;border:1px solid #7e1fff;color:#b94fff;border-radius:50%;display:grid;place-items:center;font-size:10px;flex:none}.detail b{font-size:12px}.detail span{display:block;color:#777;font-size:11px;margin-top:3px}
+.label{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:9px}.sizes{display:flex;gap:8px}.size{min-width:54px;padding:12px;background:#0a0a0c;color:#bbb;border:1px solid #34343b;cursor:pointer}.size.active,.size:hover{border-color:#a43aff;color:#fff;background:#170a25}
+.buy{width:100%;border:0;color:white;cursor:pointer;margin-top:18px}.subnote{font-size:10px;color:#6f6f77;line-height:1.6;margin-top:10px}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}.note{padding:13px;background:#09090b;border:1px solid #222;color:#aaa;font-size:10px;line-height:1.5}.note b{display:block;color:#eee;margin-bottom:3px}
+.detail-section{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.detail-photo{position:relative;background:#09090b;border:1px solid #24242a;overflow:hidden}.detail-photo img{width:100%;display:block}.detail-photo .tag{position:absolute;left:18px;bottom:18px;background:rgba(5,5,5,.82);padding:10px 12px;font-size:9px;letter-spacing:2px;font-weight:800}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.storybox{min-height:410px;position:relative;overflow:hidden;background:linear-gradient(135deg,#180024,#08080b);border:1px solid #2c2033}.storybox:before{content:"N+";position:absolute;right:-20px;bottom:-70px;font-size:300px;font-weight:900;color:rgba(150,50,255,.1)}.storybox span{position:absolute;left:30px;top:28px;color:#b94fff;letter-spacing:4px;font-size:10px;font-weight:900}
+footer{padding:48px 6vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#777;font-size:11px;line-height:1.8}.footlogo{color:#fff;font-size:19px;font-weight:900}
+.toast{position:fixed;z-index:100;left:50%;bottom:22px;transform:translate(-50%,150px);background:#16161a;border:1px solid #3a3a42;padding:13px 18px;font-size:12px;transition:.3s}.toast.show{transform:translate(-50%,0)}
+.order-form{margin-top:22px;padding:18px;background:#09090b;border:1px solid #25252b}
+.order-form-title{font-size:11px;letter-spacing:2px;font-weight:900;color:#b94fff;margin-bottom:14px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-field{display:flex;flex-direction:column;gap:6px}.form-field.full{grid-column:1/-1}
+.form-field label{font-size:9px;letter-spacing:1px;color:#888;font-weight:800}
+.form-field input,.form-field textarea{width:100%;border:1px solid #303038;background:#0d0d10;color:#fff;padding:11px;font:inherit;font-size:11px;outline:none}
+.form-field input:focus,.form-field textarea:focus{border-color:#8a1cff}
+.form-field textarea{min-height:70px;resize:vertical}
+.order-summary{margin-top:13px;padding-top:12px;border-top:1px solid #222;color:#8d8d96;font-size:10px;line-height:1.7}
+.order-summary strong{color:#fff}
+<style>
+.size-tools{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.size-tool-btn{border:1px solid #3a3a42;background:#0b0b0e;color:#fff;padding:9px 12px;font-size:9px;letter-spacing:1px;font-weight:900;cursor:pointer}
+.size-tool-btn:hover{border-color:#8e2dff}
+.size-modal{position:fixed;inset:0;z-index:190;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.82);padding:18px}
+.size-modal.open{display:flex}
+.size-card{width:min(560px,94vw);max-height:90vh;overflow:auto;background:#0b0b0e;border:1px solid #333;padding:22px;box-shadow:0 20px 80px rgba(0,0,0,.6)}
+.size-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.size-head h3{margin:0;font-size:18px}.size-x{border:1px solid #333;background:none;color:#fff;width:34px;height:34px;cursor:pointer;font-size:20px}
+.size-table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:11px}.size-table th,.size-table td{padding:11px 8px;border-bottom:1px solid #24242a;text-align:center}.size-table th{color:#999;font-size:9px;letter-spacing:1px}.size-table td:first-child{font-weight:900;color:#fff}.size-note{font-size:9px;color:#8f8f99;line-height:1.7;margin-top:10px}
+.reco-box{border:1px solid #292930;padding:14px;margin-top:10px;background:#101014}.reco-title{font-size:10px;letter-spacing:1.5px;color:#a83dff;font-weight:900;margin-bottom:10px}
+.reco-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.reco-field{display:flex;flex-direction:column;gap:5px}.reco-field label{font-size:8px;color:#8d8d96;letter-spacing:1px}.reco-field input,.reco-field select{background:#09090c;border:1px solid #303038;color:#fff;padding:10px;font:inherit;font-size:11px;outline:none}
+.reco-result{margin-top:10px;padding:11px;border:1px solid #3a204f;background:#140c1c;font-size:10px;line-height:1.6}.reco-result strong{color:#c66aff}.reco-action{margin-top:10px;width:100%;padding:11px;border:0;background:#7d20ff;color:#fff;font-weight:900;letter-spacing:1px;font-size:9px;cursor:pointer}
+@media(max-width:520px){.reco-grid{grid-template-columns:1fr}.size-card{padding:16px}}
+.instagram-link,.socials a{color:#fff;text-decoration:none}.instagram-link a:hover,.socials a:hover{color:#a43aff}
+</style>
+@media(max-width:900px){.navlinks{display:none}.hero{grid-template-columns:1fr;min-height:100svh}.hero-copy{padding:30vh 7vw 9vw}.hero-images{position:absolute;inset:70px 0 0;opacity:.5}.hero-images .front{width:75%;height:75%;left:28%;}.hero-images .back{width:60%;height:60%;right:-5%;top:25%}.hero-copy{z-index:5}.product,.detail-section,.story{grid-template-columns:1fr}.section{padding:70px 6vw}.notes{grid-template-columns:1fr}footer{flex-direction:column;gap:20px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="logo" href="#home">NINETY<span>+</span></a>
+  <div class="navlinks"><a href="#home">HOME</a><a href="#shop">SHOP</a><a href="#detail">DETAIL</a><a href="#story">ABOUT</a></div>
+  <div class="navright"><span>⌕</span><span>♡</span><span class="badge">◯</span></div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <div class="eyebrow">NINETY+ EXCLUSIVE DROP</div>
+    <h1>BOXY<br><span>BLAUGRANA</span></h1>
+    <p>More than a club. It's a culture.<br>Boxy tee dengan graphic statement untuk kamu yang hidup dengan style, sepak bola, dan street culture.</p>
+    <a class="cta" href="#shop">SHOP NOW&nbsp; →</a>
+  </div>
+  <div class="hero-images">
+    <img class="front" src="assets/look-editorial.jpg" alt="Model mengenakan Boxy Blaugrana tampak depan">
+    <img class="back" src="assets/look-back.jpg" alt="Model mengenakan Boxy Blaugrana tampak belakang">
+  </div>
+  <div class="hero-side">SAME COLORS · DIFFERENT GENERATION</div>
+</section>
+
+<section class="section" id="shop">
+  <div class="sectionhead">
+    <div><div class="kicker">THE DROP / 001</div><h2>Boxy Blaugrana Tee</h2></div>
+    <div class="small">LIMITED LAUNCH · M / L / XL</div>
+  </div>
+  <div class="product">
+    <div class="gallery">
+      <div class="gallery-main">
+        <img src="assets/look-front.jpg" alt="Boxy Blaugrana tampak depan saat dipakai">
+        <img src="assets/look-back.jpg" alt="Boxy Blaugrana tampak belakang saat dipakai">
+        <img class="gallery-wide" src="assets/look-editorial.jpg" alt="Editorial look Boxy Blaugrana">
+      </div>
+      <div class="gallery-thumbs">
+        <img src="assets/look-front.jpg" alt="Tampak depan">
+        <img src="assets/look-back.jpg" alt="Tampak belakang">
+        <img src="assets/look-editorial.jpg" alt="Editorial look">
+      </div>
+    </div>
+    <div class="info">
+      <div class="kicker">NINETY+</div>
+      <h3>BOXY BLAUGRANA TEE</h3>
+      <div class="launchlabel">LAUNCHING PRICE</div>
+      <div class="price">Rp109.000 <del>Rp149.000</del></div>
+      <p class="desc">Potongan boxy yang relaxed dengan graphic ungu yang standout. Dibuat untuk jadi statement piece yang tetap gampang dipakai sehari-hari.</p>
+      <div class="details">
+        <div class="detail"><div class="ico">01</div><div><b>BOXY / OVERSIZED FIT</b><span>Silhouette relaxed dan modern.</span></div></div>
+        <div class="detail"><div class="ico">02</div><div><b>COTTON COMFORT</b><span>Tekstur lembut dan nyaman untuk daily wear.</span></div></div>
+        <div class="detail"><div class="ico">03</div><div><b>BOLD GRAPHIC</b><span>Front & back graphic sebagai statement.</span></div></div>
+      </div>
+      <div class="label">PILIH UKURAN</div>
+      <div class="sizes"><button class="size active">M</button><button class="size">L</button><button class="size">XL</button></div>
+      <div class="size-tools">
+        <button class="size-tool-btn" id="openSizeChart" type="button">📏 LIHAT SIZE CHART</button>
+        <button class="size-tool-btn" id="openSizeReco" type="button">✨ BANTU PILIH SIZE</button>
+      </div>
+
+
+      <div class="order-form">
+        <div class="order-form-title">FORMAT ORDER</div>
+        <div class="form-grid">
+          <div class="form-field">
+            <label>NAMA LENGKAP</label>
+            <input id="name" type="text" placeholder="Nama penerima">
+          </div>
+          <div class="form-field">
+            <label>NO. WHATSAPP</label>
+            <input id="customerPhone" type="tel" placeholder="08xxxxxxxxxx">
+          </div>
+          <div class="form-field">
+            <label>KOTA / KABUPATEN</label>
+            <input id="city" type="text" placeholder="Contoh: Bekasi">
+          </div>
+          <div class="form-field">
+            <label>KODE POS</label>
+            <input id="postal" type="text" inputmode="numeric" placeholder="171xx">
+          </div>
+          <div class="form-field full">
+            <label>ALAMAT LENGKAP</label>
+            <textarea id="address" placeholder="Nama jalan, nomor rumah, RT/RW, kecamatan, dll."></textarea>
+          </div>
+          <div class="form-field">
+            <label>JUMLAH</label>
+            <input id="qty" type="number" min="1" value="1">
+          </div>
+        </div>
+        <div class="order-summary">
+          Produk: <strong>Boxy Blaugrana Tee</strong> · Harga: <strong>Rp109.000 / pcs</strong> ·
+          Ukuran: <strong id="summarySize">M</strong> · Qty: <strong id="summaryQty">1</strong><br>
+          Pembayaran: <strong>Transfer Bank</strong> · Ekspedisi: <strong>Lion Parcel</strong> ·
+          Ongkir: <strong>Mohon dicek via WhatsApp</strong>
+        </div>
+      </div>
+
+      <button class="cta buy" id="buy">💬 KIRIM FORMAT ORDER VIA WHATSAPP</button>
+      <div class="notes">
+        <div class="note"><b>💳 TRANSFER BANK</b>Hanya transfer bank. COD tidak tersedia.</div>
+        <div class="note"><b>🚚 LION PARCEL</b>Ongkir dicek via WhatsApp sesuai kota tujuan.</div>
+      </div>
+      <div class="subnote">Setelah klik checkout, WhatsApp akan terbuka dengan format order otomatis.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="detail">
+  <div class="sectionhead"><div><div class="kicker">LOOK CLOSER</div><h2>Details matter.</h2></div></div>
+  <div class="detail-section">
+    <div class="detail-photo"><img src="assets/look-front.jpg" alt="Detail fit dan bahan Boxy Blaugrana"><div class="tag">FIT / FABRIC / DETAIL</div></div>
+    <div>
+      <div class="kicker">THE FIT</div>
+      <h2>Relaxed. Heavy. Clean.</h2>
+      <p class="desc">Tiga look nyata memperlihatkan fit boxy, graphic belakang, dan styling saat dipakai sehingga pembeli bisa melihat karakter kaos dengan lebih jelas sebelum order.</p>
+      <div class="details">
+        <div class="detail"><div class="ico">M</div><div><b>SIZE M</b><span>Fit boxy / relaxed.</span></div></div>
+        <div class="detail"><div class="ico">L</div><div><b>SIZE L</b><span>Fit boxy / relaxed.</span></div></div>
+        <div class="detail"><div class="ico">XL</div><div><b>SIZE XL</b><span>Fit boxy / relaxed.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story">
+  <div class="story">
+    <div><div class="kicker">NINETY+ / 90</div><h2>WEAR THE CULTURE.</h2><p class="desc">NINETY+ membawa energi match day dan streetwear ke dalam satu silhouette yang clean. Drop pertama dibuat untuk kamu yang ingin tampil bold tanpa kehilangan karakter.</p></div>
+    <div class="storybox"><span>BUILT FOR THE CULTURE</span></div>
+  </div>
+</section>
+
+<div class="instagram-link"><a href="https://instagram.com/ninetyplus_id" target="_blank" rel="noopener">Instagram: @ninetyplus_id</a></div><footer>
+  <div><div class="footlogo">NINETY+</div>WEAR THE CULTURE.</div>
+  <div>Instagram · TikTok · WhatsApp<br>Payment: Transfer Bank · Shipping: Lion Parcel · COD: Tidak tersedia<br>© 2026 NINETY+</div>
+</footer>
+
+<div class="size-modal" id="sizeModal" aria-hidden="true">
+  <div class="size-card">
+    <div class="size-head"><h3>SIZE CHART — BOXY BLAUGRANA</h3><button class="size-x" id="closeSizeModal" type="button">×</button></div>
+    <table class="size-table">
+      <thead><tr><th>SIZE</th><th>LEBAR (cm)</th><th>PANJANG (cm)</th><th>LINGKAR DADA (cm)</th></tr></thead>
+      <tbody>
+        <tr><td>M</td><td>54</td><td>65</td><td>108</td></tr>
+        <tr><td>L</td><td>57</td><td>66</td><td>114</td></tr>
+        <tr><td>XL</td><td>60</td><td>68</td><td>120</td></tr>
+      </tbody>
+    </table>
+    <div class="size-note">Ukuran di atas mengikuti size chart yang kamu kirim. Toleransi produksi bisa berbeda sedikit. Untuk hasil paling aman, bandingkan dengan kaos yang paling nyaman kamu pakai.</div>
+  </div>
+</div>
+
+<div class="size-modal" id="recoModal" aria-hidden="true">
+  <div class="size-card">
+    <div class="size-head"><h3>BANTU PILIH SIZE</h3><button class="size-x" id="closeRecoModal" type="button">×</button></div>
+    <div class="reco-box">
+      <div class="reco-title">REKOMENDASI BERDASARKAN LINGKAR DADA</div>
+      <div class="reco-grid">
+        <div class="reco-field"><label>LINGKAR DADA KAMU (CM)</label><input id="bodyChest" type="number" min="70" max="150" placeholder="Contoh: 92"></div>
+        <div class="reco-field"><label>GAYA PAKAI</label><select id="fitPref"><option value="regular">Regular boxy</option><option value="loose">Lebih loose / oversized</option></select></div>
+      </div>
+      <button class="reco-action" id="calcReco" type="button">CEK REKOMENDASI SIZE</button>
+      <div class="reco-result" id="recoResult">Masukkan lingkar dada untuk melihat rekomendasi.</div>
+      <div class="size-note">Ini adalah rekomendasi awal berdasarkan ukuran kaos dan ruang nyaman untuk potongan boxy, bukan jaminan ukuran. Kalau kamu punya kaos yang pas, cara paling akurat adalah mengukur lingkar dada atau membandingkan ukurannya dengan tabel di atas.</div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Tutup foto">×</button>
+  <div class="lightbox-stage" id="lbStage">
+    <img id="lbImage" src="" alt="">
+  </div>
+  <div class="lb-caption" id="lbCaption">DETAIL FOTO</div>
+  <div class="lb-controls">
+    <button class="lb-control" id="lbPrev" type="button" aria-label="Foto sebelumnya">‹</button>
+    <button class="lb-control" id="lbZoomOut" type="button" aria-label="Perkecil">−</button>
+    <button class="lb-control" id="lbReset" type="button" aria-label="Reset zoom">100%</button>
+    <button class="lb-control" id="lbZoomIn" type="button" aria-label="Perbesar">+</button>
+    <button class="lb-control" id="lbNext" type="button" aria-label="Foto berikutnya">›</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">Ukuran <b id="chosen">M</b> dipilih. Membuka WhatsApp…</div>
+<script>
+let selected='M';
+document.querySelectorAll('.size').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.size').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); selected=b.textContent.trim(); document.getElementById('summarySize').textContent=selected;
+}));
+const sizeModal=document.getElementById('sizeModal');
+const recoModal=document.getElementById('recoModal');
+function toggleModal(el,open){el.classList.toggle('open',open);el.setAttribute('aria-hidden',open?'false':'true');}
+document.getElementById('openSizeChart').addEventListener('click',()=>toggleModal(sizeModal,true));
+document.getElementById('closeSizeModal').addEventListener('click',()=>toggleModal(sizeModal,false));
+document.getElementById('openSizeReco').addEventListener('click',()=>toggleModal(recoModal,true));
+document.getElementById('closeRecoModal').addEventListener('click',()=>toggleModal(recoModal,false));
+[sizeModal,recoModal].forEach(m=>m.addEventListener('click',e=>{if(e.target===m)toggleModal(m,false)}));
+document.getElementById('calcReco').addEventListener('click',()=>{
+  const chest=parseFloat(document.getElementById('bodyChest').value);
+  const fit=document.getElementById('fitPref').value;
+  const result=document.getElementById('recoResult');
+  if(!chest){result.innerHTML='Masukkan lingkar dada kamu dulu, misalnya <strong>92 cm</strong>.';return;}
+  const ease=fit==='loose'?18:14;
+  const target=chest+ease;
+  let size='XL', garment=120;
+  if(target<=108){size='M';garment=108}
+  else if(target<=114){size='L';garment=114}
+  else {size='XL';garment=120}
+  const extra=garment-target;
+  result.innerHTML=`Rekomendasi awal: <strong>${size}</strong><br>Lingkar dada kaos ${size}: <strong>${garment} cm</strong> · ruang perkiraan: <strong>${Math.max(0,Math.round(extra))} cm</strong>.<br><span style="color:#999">Untuk gaya ${fit==='loose'?'lebih loose / oversized':'regular boxy'}.</span>`;
+  // Sync product size selection to recommendation.
+  selected=size;
+  document.querySelectorAll('.size').forEach(b=>{b.classList.toggle('active',b.textContent.trim()===size)});
+  document.getElementById('summarySize').textContent=size;
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){toggleModal(sizeModal,false);toggleModal(recoModal,false)}
+});
+const lightbox=document.getElementById('lightbox');
+const lbImage=document.getElementById('lbImage');
+const lbCaption=document.getElementById('lbCaption');
+const lbStage=document.getElementById('lbStage');
+const galleryImages=[...document.querySelectorAll('.gallery-main img')];
+let lbIndex=0, lbZoom=1;
+
+function showLightbox(index){
+  lbIndex=(index+galleryImages.length)%galleryImages.length;
+  const source=galleryImages[lbIndex];
+  lbImage.src=source.currentSrc||source.src;
+  lbImage.alt=source.alt;
+  lbCaption.textContent=(source.alt||'DETAIL FOTO').toUpperCase();
+  lbZoom=1;
+  lbImage.style.transform='scale(1)';
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+function changeZoom(amount){
+  lbZoom=Math.min(3,Math.max(1,lbZoom+amount));
+  lbImage.style.transform=`scale(${lbZoom})`;
+}
+galleryImages.forEach((img,i)=>img.addEventListener('click',()=>showLightbox(i)));
+document.querySelectorAll('.gallery-thumbs img').forEach((thumb,i)=>thumb.addEventListener('click',()=>showLightbox(i)));
+document.getElementById('lbClose').addEventListener('click',closeLightbox);
+document.getElementById('lbPrev').addEventListener('click',()=>showLightbox(lbIndex-1));
+document.getElementById('lbNext').addEventListener('click',()=>showLightbox(lbIndex+1));
+document.getElementById('lbZoomIn').addEventListener('click',()=>changeZoom(.25));
+document.getElementById('lbZoomOut').addEventListener('click',()=>changeZoom(-.25));
+document.getElementById('lbReset').addEventListener('click',()=>{lbZoom=1;lbImage.style.transform='scale(1)'});
+lightbox.addEventListener('click',e=>{if(e.target===lightbox||e.target===lbStage)closeLightbox()});
+lbStage.addEventListener('wheel',e=>{e.preventDefault();changeZoom(e.deltaY<0?.2:-.2)},{passive:false});
+document.addEventListener('keydown',e=>{
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowLeft') showLightbox(lbIndex-1);
+  if(e.key==='ArrowRight') showLightbox(lbIndex+1);
+  if(e.key==='+'||e.key==='=') changeZoom(.25);
+  if(e.key==='-') changeZoom(-.25);
+});
+
+function wa(){
+ const name=document.getElementById('name').value.trim();
+ const customerPhone=document.getElementById('customerPhone').value.trim();
+ const city=document.getElementById('city').value.trim();
+ const postal=document.getElementById('postal').value.trim();
+ const address=document.getElementById('address').value.trim();
+ const qty=Math.max(1,parseInt(document.getElementById('qty').value||'1',10));
+ if(!name||!customerPhone||!city||!postal||!address){
+   alert('Lengkapi nama, nomor WhatsApp, kota/kabupaten, kode pos, dan alamat lengkap terlebih dahulu.');
+   return;
+ }
+ const subtotal=109000*qty;
+ const msg =
+ 'Halo NINETY+! Saya mau order.%0A%0A' +
+ '*FORMAT ORDER*%0A' +
+ 'Produk: Boxy Blaugrana Tee%0A' +
+ 'Ukuran: '+encodeURIComponent(selected)+'%0A' +
+ 'Qty: '+qty+' pcs%0A' +
+ 'Harga: Rp109.000 / pcs%0A' +
+ 'Subtotal: Rp'+subtotal.toLocaleString('id-ID')+'%0A%0A' +
+ '*DATA PENERIMA*%0A' +
+ 'Nama: '+encodeURIComponent(name)+'%0A' +
+ 'No. WhatsApp: '+encodeURIComponent(customerPhone)+'%0A' +
+ 'Kota/Kabupaten: '+encodeURIComponent(city)+'%0A' +
+ 'Kode Pos: '+encodeURIComponent(postal)+'%0A' +
+ 'Alamat: '+encodeURIComponent(address)+'%0A%0A' +
+ '*PENGIRIMAN & PEMBAYARAN*%0A' +
+ 'Ekspedisi: Lion Parcel%0A' +
+ 'Ongkir: Mohon dicek%0A' +
+ 'Pembayaran: Transfer Bank%0A' +
+ 'COD: Tidak tersedia%0A%0A' +
+ 'Mohon info total pembayaran setelah ongkir Lion Parcel dicek. Terima kasih!';
+ window.open('https://wa.me/6282341257779?text='+msg,'_blank');
+ document.getElementById('chosen').textContent=selected;
+ const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);
+}
+document.getElementById('qty').addEventListener('input',()=>document.getElementById('summaryQty').textContent=Math.max(1,parseInt(document.getElementById('qty').value||'1',10))); document.getElementById('buy').addEventListener('click',wa);
+</script>
+</body>
+</html>
